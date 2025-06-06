@@ -109,6 +109,13 @@ body {
     border: 1px solid #ccc;
     border-radius: 5px;
     overflow: hidden;
+    background-color: #f9f9f9;  /* Добавляем фон для лучшей видимости */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Добавляем тень */
+    transition: transform 0.2s ease-in-out; /* Плавная анимация при наведении */
+}
+
+.project-item:hover {
+    transform: scale(1.05); /* Увеличиваем при наведении */
 }
 
 .project-item h2 {
@@ -117,6 +124,7 @@ body {
     padding: 5px;
     margin: 0;
     font-size: 14px;
+    color: white; /* Делаем текст заголовка белым */
 }
 
 .project-item iframe {
@@ -129,6 +137,8 @@ body {
 html, body { /* Чтобы избежать проблем с iframe */
     margin: 0;
     padding: 0;
+    font-size: 14px; /* Устанавливаем базовый размер шрифта */
+    line-height: 1.4;   /* Устанавливаем межстрочный интервал */
 }
 
 /* Стили для мини-счетов */
@@ -142,12 +152,30 @@ html, body { /* Чтобы избежать проблем с iframe */
 }
 
 /* Стили для мини-калькулятора */
-input { margin: 5px; }
+input, select, button {
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
 
-/* Стили для загадки (может быть пустой, если не требуется) */
+button {
+    background-color: #eee;
+    cursor: pointer;
+}
 
-/* Стили для угадай число (может быть пустой, если не требуется) */
+button:hover {
+    background-color: #ddd;
+}
 
-/* Стили для таймера (может быть пустой, если не требуется) */
+/* Стили для загадки (и других проектов) */
+p {
+  margin-bottom: 10px;
+}
 
-/* Стили для генератора случайных чисел (может быть пустой, если не требуется) */
+input[type="text"], input[type="number"] {
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
