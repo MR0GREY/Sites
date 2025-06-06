@@ -1,153 +1,66 @@
-/* Общие стили */
-body {
-    margin: 0;
-    font-family: sans-serif;
-    background: linear-gradient(to bottom, #3498db, #9b59b6);
-    height: 100vh;
-    color: white;
-    overflow: hidden;
-}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мои Проекты</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
 
-.container {
-    display: flex;
-    height: 100%;
-}
+        <aside class="sidebar">
+            <button class="menu-toggle" aria-label="Открыть/закрыть меню">☰</button>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="#">О нас</a></li>
+                    <li><a href="#">Услуги</a></li>
+                    <li><a href="projects.html">Проекты</a></li>
+                    <li><a href="#">Контакты</a></li>
+                </ul>
+            </nav>
+        </aside>
 
-/* Стили бокового меню */
-.sidebar {
-    background-color: rgba(0, 0, 0, 0.5);
-    width: 250px;
-    padding: 20px;
-    box-sizing: border-box;
-    transition: transform 0.3s ease;
-}
+        <main class="content">
+            <h1>Мои Мини-Проекты JavaScript</h1>
 
-.sidebar nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
+            <div class="projects-container">
 
-.sidebar nav ul li {
-    margin-bottom: 10px;
-}
+                <div class="project-item">
+                    <h2>Мини-Счеты</h2>
+                    <iframe src="./projects/abacus/index.html"></iframe>
+                </div>
 
-.sidebar nav ul li a {
-    color: white;
-    text-decoration: none;
-    display: block;
-    padding: 10px;
-    border-radius: 5px;
-    transition: background-color 0.2s ease;
-}
+                <div class="project-item">
+                    <h2>Мини-Калькулятор</h2>
+                    <iframe src="./projects/calculator/index.html"></iframe>
+                </div>
 
-.sidebar nav ul li a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
+                <div class="project-item">
+                    <h2>Загадка</h2>
+                    <iframe src="./projects/riddle/index.html"></iframe>
+                </div>
 
-/* Стили контента */
-.content {
-    flex: 1;
-    padding: 20px;
-    box-sizing: border-box;
-}
+                <div class="project-item">
+                    <h2>Игра "Угадай число"</h2>
+                    <iframe src="./projects/guess-number/index.html"></iframe>
+                </div>
 
-/* Кнопка для открытия/закрытия меню (для мобильных) */
-.menu-toggle {
-    background-color: transparent;
-    border: none;
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    display: none;
-}
+                 <div class="project-item">
+                    <h2>Простой таймер</h2>
+                    <iframe src="./projects/timer/index.html"></iframe>
+                </div>
 
-/* Класс для скрытия меню */
-.sidebar.hidden {
-    transform: translateX(-250px);
-}
+                 <div class="project-item">
+                    <h2>Генератор случайных чисел</h2>
+                    <iframe src="./projects/random-number/index.html"></iframe>
+                </div>
 
-/* Медиа-запрос для адаптации под мобильные устройства */
-@media (max-width: 768px) {
-    .sidebar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100%;
-        z-index: 10;
-        transform: translateX(-250px);
-    }
+            </div>
+        </main>
+    </div>
 
-    .content {
-        padding-top: 60px;
-    }
-
-    .menu-toggle {
-        display: block;
-    }
-
-    .sidebar.hidden {
-        transform: translateX(0);
-    }
-}
-
-/* Стили для страницы проектов */
-.projects-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    padding: 20px;
-}
-
-.project-item {
-    width: 250px;
-    margin-right: 20px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-.project-item h2 {
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.3);
-    padding: 5px;
-    margin: 0;
-    font-size: 14px;
-}
-
-.project-item iframe {
-    width: 100%;
-    height: 150px;
-    border: none;
-}
-
-/* Стили для мини-проектов (встраиваемые) */
-html, body { /* Чтобы избежать проблем с iframe */
-    margin: 0;
-    padding: 0;
-}
-
-/* Стили для мини-счетов */
-.bead {
-    width: 20px;
-    height: 20px;
-    background-color: blue;
-    border-radius: 50%;
-    display: inline-block;
-    margin: 2px;
-}
-
-/* Стили для мини-калькулятора */
-input { margin: 5px; }
-
-/* Стили для загадки (может быть пустой, если не требуется) */
-
-/* Стили для угадай число (может быть пустой, если не требуется) */
-
-/* Стили для таймера (может быть пустой, если не требуется) */
-
-/* Стили для генератора случайных чисел (может быть пустой, если не требуется) */
+    <script src="script.js"></script>
+</body>
+</html>
