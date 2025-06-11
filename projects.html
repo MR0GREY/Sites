@@ -1,71 +1,88 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мои Проекты</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Мои Проекты</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="container">
+  <div class="container">
 
-        <aside class="sidebar">
-            <button class="menu-toggle" aria-label="Открыть/закрыть меню">☰</button>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Главная</a></li>
-                    <li><a href="#">О нас</a></li>
-                    <li><a href="#">Услуги</a></li>
-                    <li><a href="projects.html">Проекты</a></li>
-                    <li><a href="#">Контакты</a></li>
-                </ul>
-            </nav>
-        </aside>
+    <!-- Боковое меню -->
+    <aside class="sidebar">
+      <button class="menu-toggle" aria-label="Открыть/закрыть меню">☰</button>
+      <nav>
+        <ul>
+          <li><a href="index.html">Главная</a></li>
+          <li><a href="about/">О нас</a></li>
+          <li><a href="pay/">Услуги</a></li>
+          <li><a href="projects.html">Проекты</a></li>
+          <li><a href="kontakt/">Контакты</a></li>
+        </ul>
+      </nav>
+    </aside>
 
-        <main class="content">
-            <h1>Мои Мини-Проекты JavaScript</h1>
+    <!-- Основной контент -->
+    <main class="content">
+      <h1>Мои Проекты JavaScript</h1>
 
-            <div class="projects-container">
+      <div class="projects-container">
 
-                <div class="project-item">
-                    <h2>Мини-Счеты</h2>
-                    <iframe src="./projects/abacus/index.html"></iframe>
-                </div>
+        <div class="project-item">
+          <h2>Мини-Счеты</h2>
+          <a href="./projects/schety/index.html" target="_blank">
+            <iframe src="./projects/schety/index.html" loading="lazy"></iframe>
+          </a>
+        </div>
 
-                <div class="project-item">
-                    <h2>Мини-Калькулятор</h2>
-                    <iframe src="./projects/calculator/index.html"></iframe>
-                </div>
+        <div class="project-item">
+          <h2>Мини-Калькулятор</h2>
+          <a href="./projects/calculator/index.html" target="_blank">
+            <iframe src="./projects/calculator/index.html" loading="lazy"></iframe>
+          </a>
+        </div>
 
-                <div class="project-item">
-                    <h2>Загадка</h2>
-                    <iframe src="./projects/riddle/index.html"></iframe>
-                </div>
+        <div class="project-item">
+          <h2>Загадка</h2>
+          <a href="./projects/zagadka/index.html" target="_blank">
+            <iframe src="./projects/zagadka/index.html" loading="lazy"></iframe>
+          </a>
+        </div>
 
-                <div class="project-item">
-                    <h2>Игра "Угадай число"</h2>
-                    <iframe src="./projects/guess-number/index.html"></iframe>
-                </div>
+        <div class="project-item">
+          <h2>Игра "Угадай число"</h2>
+          <a href="./projects/number/index.html" target="_blank">
+            <iframe src="./projects/number/index.html" loading="lazy"></iframe>
+          </a>
+        </div>
 
-                 <div class="project-item">
-                    <h2>Простой таймер</h2>
-                    <iframe src="./projects/timer/index.html"></iframe>
-                </div>
+        <div class="project-item">
+          <h2>Простой таймер</h2>
+          <a href="./projects/timer/index.html" target="_blank">
+            <iframe src="./projects/timer/index.html" loading="lazy"></iframe>
+          </a>
+        </div>
 
-                 <div class="project-item">
-                    <h2>Генератор случайных чисел</h2>
-                    <iframe src="./projects/random-number/index.html"></iframe>
-                </div>
+        <div class="project-item">
+          <h2>Генератор случайных чисел</h2>
+          <a href="./projects/random/index.html" target="_blank">
+            <iframe src="./projects/random/index.html" loading="lazy"></iframe>
+          </a>
+        </div>
 
-                <div class="project-item">
-                    <h2>фичи</h2>
-                    <iframe src="./projects/fici/index.html"></iframe>
-                </div>
+        <div class="project-item">
+          <h2>Смена темы</h2>
+          <a href="./projects/theme/index.html" target="_blank">
+            <iframe src="./projects/theme/index.html" loading="lazy"></iframe>
+          </a>
+        </div>
 
-            </div>
-        </main>
-    </div>
+      </div>
+    </main>
+  </div>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
+
 </body>
 </html>

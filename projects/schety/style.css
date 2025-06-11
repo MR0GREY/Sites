@@ -1,0 +1,81 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    background: linear-gradient(to right, #4a148c, #004d40);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 30px; /* Увеличим отступ */
+    border-radius: 15px; /* Закруглим углы больше */
+    text-align: center;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.4); /* Увеличим тень */
+    width: 90%; /* Увеличим ширину */
+    max-width: 700px; /* Увеличим максимальную ширину */
+}
+
+h1 {
+    margin-bottom: 30px; /* Увеличим отступ */
+    color: #fff;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.6); /* Увеличим тень */
+    font-size: 2.5em; /* Увеличим размер шрифта */
+}
+
+button {
+    background: linear-gradient(to bottom, #7e57c2, #673ab7); /* Градиент для кнопок */
+    color: white;
+    padding: 12px 25px; /* Увеличим отступ */
+    border: none;
+    border-radius: 8px; /* Закруглим углы */
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Добавим анимацию при наведении */
+    margin: 8px; /* Увеличим отступ */
+    font-size: 1.1em; /* Увеличим размер шрифта */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Добавим тень */
+}
+
+button:hover {
+    transform: translateY(-2px); /* Приподнимаем кнопку при наведении */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Увеличим тень при наведении */
+}
+
+button:active {
+    transform: translateY(0); /* Возвращаем кнопку в исходное положение при нажатии */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Уменьшаем тень при нажатии */
+}
+
+.schety-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px; /* Увеличим отступ */
+}
+
+/* Разделитель между рядами */
+.schety-row:nth-child(1) {
+    margin-bottom: 25px; /* Увеличим отступ для разделителя */
+}
+
+.bead {
+    width: 25px; /* Увеличим ширину */
+    height: 50px; /* Увеличим высоту */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.3)); /* Градиент для костяшек */
+    border-radius: 8px; /* Закруглим углы */
+    margin: 0 8px; /* Увеличим отступ */
+    transition: background-color 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.7); /* Увеличим прозрачность */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Добавим тень */
+}
+
+.bead.filled {
+    background: linear-gradient(to bottom, #8e24aa, #673ab7); /* Градиент для заполненных костяшек */
+    border: 1px solid #5e35b1; /* Изменим цвет границы */
+}
+
+#controls {
+    margin-top: 30px; /* Увеличим отступ */
+}
