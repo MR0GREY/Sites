@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Комплектующие для ПК</title>
+<link rel="stylesheet" href="baraki.css">
+</head>
+<body class="light-theme">
+<!-- Шапка -->
+<header>
+<h1><a href="index.html"> Комплектующие для ПК</a></h1>
+<nav>
+<ul>
+<li><a href="#catalog">Каталог</a></li>
+<li><a href="#news">Новости и обзоры</a></li>
+<li><a href="contacts.html">Контакты</a></li>
+<select id="theme-select">
+ <option value="light">Светлая тема</option>
+ <option value="dark">Темная тема</option>
+ <option value="green">Зелёная тема</option>
+ <option value="darkblue">Тёмно-синяя тема</option>
+</select>
+</ul>
+</nav>
+</header>
+<!-- Главная секция -->
+<br><br>
+
+<button id="myButton">Кнопка</button> <br> <br> 
+
+<button class="numbered-buttons" data-number="1">1</button>
+<button class="numbered-buttons" data-number="2">2</button>
+<button class="numbered-buttons" data-number="3">3</button>
+<button id="counting-button">4</button>
+<button id="change-text-button">5</button> <br> <br>
+
+<button id="add-header-btn">Добавить заголовок</button>
+<button id="remove-header-btn">Удалить заголовок</button>
+<button id="hoverCounter">Наведите сюда мышь</button>
+<p id="counterDisplay">Кол-во наведений: 0</p>
+<h2>Список элементов:</h2>
+<ul id="list"></ul>
+
+<p></p>
+
+<button id="add-item-btn">Добавить элемент</button>
+<button id="delete-first-btn">Удалить первый элемент</button>
+<button id="class-click-btn">Добавить класс</button> <br> <br>
+
+<div class="content"></div> <br>
+
+<p class="super_element">Привет</p>
+<img src="https://placeimg.com/50/50/animals" alt="">
+<img src="https://placeimg.com/50/50/arch" alt="">
+<img src="https://placeimg.com/50/50/nature" alt="">
+<img src="https://placeimg.com/50/50/people" alt="">
+<img src="https://placeimg.com/50/50/tech" alt="">
+<img src="https://placeimg.com/50/50/tech/grayscale" alt="">
+<img src="https://placeimg.com/50/50/tech/sepia" alt="">
+<br>
+<button>Кнопка</button>
+<button class="super_element">Кнопка с классом btn</button>
+<button>Кнопка</button>
+<br>
+<textarea></textarea>
+<br>
+<ul>
+    <li><button>Кнопка 1</button></li>
+    <li><button>Кнопка 2</button></li>
+    <li><button>Кнопка 3</button></li>
+    <li><button>Кнопка 4</button></li>
+</ul>
+<BR> <BR>
+
+ <section id="agreement">
+  <h2>Согласие с условиями</h2>
+  <div class="agreement">
+<input type="checkbox" id="agreementCheckbox">
+<label for="agreementCheckbox">Согласен с условиями</label>
+<button id="submitButton">Отправить</button>
+<p id="warningMessage" style="display:none; color:red;">Необходимо согласиться с условиями.</p> 
+</div>
+</section>
+
+<section id="drinks">
+ <h2>Напитки</h2>
+ <div class="drink">
+<input type="radio" name="drink" value="tea" id="teaRadio">
+<label for="teaRadio">Чай</label>
+<input type="radio" name="drink" value="coffee" id="coffeeRadio">
+<label for="coffeeRadio">Кофе</label>
+<button id="sendButton">Отправить</button>
+<p id="messageOutput"></p> 
+ </div>
+ </section>
+
+<section id="password-section">
+ <h2>Проверка пароля</h2>
+ <div class="password-container">
+     <input type="password" id="password-input" placeholder="Введите пароль">
+     <button id="check-password">Проверить</button>
+ </div>
+ <p id="password-message"></p>
+</section>
+
+<section id="dynamic-title-section">
+ <h2>Заголовочек</h2>
+ <h1 id="dynamic-heading">Заголовок</h1>
+ <input 
+     type="text" 
+     id="title-input" 
+     placeholder="Введите текст для заголовка"
+ >
+</section>
+<section id="dynamic-content">
+ <div class="input-group">
+     <input type="text" id="from" placeholder="Введите текст">
+     <span id="output"></span>
+ </div>
+</section>
+<section>
+ <h2>Аноним</h2>
+<button class="messageBtn">Показать сообщение</button>
+<div class="message">Это скрытое сообщение!</div>
+</section>
+<section>
+ <h2>Намбер</h2>
+ <form id="validationForm">
+     <input type="text" name="name" placeholder="Имя" required>
+     <input type="email" name="email" placeholder="Email" required>
+     <input type="tel" name="phone" placeholder="Телефон" required>
+     <button type="submit">Отправить</button>
+ </form>
+</section>
+<br><br><br><br><br><br><br><br><br>
+ <!-- Подвал -->
+<footer>
+ <address>
+ Контактная информация:<br>
+ Те<br>
+ 
+ </address>
+ <small></small>
+ </footer>
+ <script src="fontan.js"></script>
+ </body>
+ </html>
