@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<title>Мой видеоплеер</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div id="videoContainer">
+  <video id="video" src="video.mp4" controlsList="nodownload"></video>
+</div>
+
+<div id="controls">
+  <button id="playPauseBtn"><img src="img/play.png" width="30" height="30" alt="Play/Pause"></button>
+  <div id="progressContainer">
+    <div id="progress"></div>
+  </div>
+  <div id="time">0:00</div>
+  <div id="volumeContainer">
+    <label for="volume">🔊</label>
+    <input type="range" id="volume" min="0" max="1" step="0.01" value="1" />
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

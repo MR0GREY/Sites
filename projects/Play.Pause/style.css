@@ -1,0 +1,54 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #222;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+#videoContainer {
+  position: relative;
+  width: 640px;
+  background: #000;
+}
+video {
+  width: 100%;
+}
+#controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background: #333;
+  width: 640px;
+}
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+#progressContainer {
+  flex: 1;
+  margin: 0 10px;
+  height: 10px;
+  background: #555;
+  cursor: pointer;
+  position: relative;
+}
+#progress {
+  height: 10px;
+  background: #f00;
+  width: 0%;
+}
+#time {
+  min-width: 50px;
+  text-align: center;
+}
+#volumeContainer {
+  display: flex;
+  align-items: center;
+}
+#volume {
+  width: 100px;
+}
