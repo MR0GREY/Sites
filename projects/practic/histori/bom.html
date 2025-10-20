@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Задание 1 — Работа с BOM</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background:#f8f9fa; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace; }
+  </style>
+</head>
+<body>
+  <div class="container py-5">
+    <h1 class="mb-4">BOM</h1>
+
+    <!-- 1. Отображение размера окна -->
+    <section class="mb-4">
+      <h5>1. Текущий размер окна</h5>
+      <p class="small text-muted">Изменяй размер окна — показ обновится (с дебаунсом).</p>
+      <div class="card p-3">
+        <div class="d-flex gap-3 align-items-center">
+          <div>
+            <div class="text-muted small">Ширина</div>
+            <div id="win-width" class="h4 mono">—</div>
+          </div>
+          <div>
+            <div class="text-muted small">Высота</div>
+            <div id="win-height" class="h4 mono">—</div>
+          </div>
+          <div class="ms-auto text-end">
+            <div class="text-muted small">Последнее обновление</div>
+            <div id="last-upd" class="small mono">—</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Подтверждение закрытия страницы -->
+    <section class="mb-4">
+      <h5>2. Подтверждение закрытия вкладки</h5>
+      <p class="small text-muted">Попробуй закрыть вкладку/обновить страницу — появится запрос.</p>
+      <div class="card p-3">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="enable-unload" checked>
+          <label class="form-check-label" for="enable-unload">Включить подтверждение при закрытии</label>
+        </div>
+        <div class="mt-2 small text-muted">Современные браузеры показывают встроенный текст, кастомный текст игнорируется.</div>
+      </div>
+    </section>
+
+    <!-- 3. Управление историей -->
+    <section>
+      <h5>3. Управление историей переходов</h5>
+      <p class="small text-muted">Навигация демонстрационного SPA: кликай ссылки — они пушат состояния в историю.</p>
+
+      <div class="card p-3 mb-3">
+        <div class="d-flex gap-2 flex-wrap">
+          <button class="btn btn-outline-secondary" id="nav-home">Главная</button>
+          <button class="btn btn-outline-secondary" id="nav-schedule">Расписания</button>
+          <button class="btn btn-outline-secondary" id="nav-about">О клубе</button>
+
+          <div class="vr mx-2"></div>
+
+          <button class="btn btn-primary" id="hist-back">← Назад</button>
+          <button class="btn btn-primary" id="hist-forward">Вперед →</button>
+        </div>
+
+        <div class="mt-3">
+          <div id="page-content" class="p-3 bg-white border rounded">Контент страницы</div>
+        </div>
+
+        <div class="mt-2 small text-muted">Текущее состояние: <span id="state-info" class="mono">none</span></div>
+      </div>
+    </section>
+
+ 
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // ---------------------------
+    // 1) Отслеживаем размер окна
+    // ---------------------------
+    const widthEl = document.getElementById('win-width');
+    const heightEl = document.getElementById('win-height');
+    const lastUpdEl = document.getElementById('last-upd');
+
+    // Дебаунс — чтобы не спамить при ресайзе
+    function debounce(fn, wait = 120) {
+      let t = null;
+      return (...args) => {
+        clearTimeout(t);
+        t = setTimeout(() => fn(...args), wait);
+      };
+    }
+
+    function updateWindowSize() {
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      widthEl.textContent = w + ' px';
+      heightEl.textContent = h + ' px';
+      lastUpdEl.textContent = new Date().toLocaleTimeString();
+    }
+
+    // Инициализация и привязка события с дебаунсом
+    updateWindowSize();
+    window.addEventListener('resize', debounce(updateWindowSize, 120));
+
+    // ---------------------------
+    // 2) Подтверждение закрытия
+    // ---------------------------
+    const enableUnloadCheckbox = document.getElementById('enable-unload');
+
+    function beforeUnloadHandler(e) {
+      // если не включено — ничего не делаем
+      if (!enableUnloadCheckbox.checked) return;
+      // стандартный паттерн: назначаем returnValue и preventDefault
+      e.preventDefault();
+      e.returnValue = ''; // современные браузеры игнорируют текст, но требуют присвоения
+      // Если returnValue задан — браузер покажет диалог
+      return '';
+    }
+
+    window.addEventListener('beforeunload', beforeUnloadHandler);
+
+    // ---------------------------
+    // 3) Управление историей
+    // ---------------------------
+
+    const pageContent = document.getElementById('page-content');
+    const stateInfo = document.getElementById('state-info');
+
+    // Небольшие "виртуальные" страницы (контент)
+    const pages = {
+      home: { title: 'Главная', content: '<h4>Главная</h4><p>Добро пожаловать в клуб. Это главная страница.</p>' },
+      schedule: { title: 'Расписание', content: '<h4>Расписание занятий</h4><ul><li>Йога — 10:00</li><li>Кроссфит — 13:00</li></ul>' },
+      about: { title: 'О клубе', content: '<h4>О клубе</h4><p>Коротко о нас — спорт, крутость и немного сарказма.</p>' }
+    };
+
+    // Рендер содержимого по state
+    function renderState(state) {
+      if (!state) {
+        pageContent.innerHTML = '<h4>Пустое состояние</h4><p>Используй кнопки навигации.</p>';
+        stateInfo.textContent = 'none';
+        document.title = 'BOM — тестовое';
+        return;
+      }
+      const p = pages[state.page] || pages.home;
+      pageContent.innerHTML = p.content;
+      stateInfo.textContent = JSON.stringify(state);
+      document.title = p.title + ' — BOM тест';
+    }
+
+    // Навигация: pushState
+    function navigateTo(pageKey) {
+      const newState = { page: pageKey, ts: Date.now() };
+      history.pushState(newState, pages[pageKey].title, '#' + pageKey);
+      renderState(newState);
+    }
+
+    // Кнопки навигации
+    document.getElementById('nav-home').addEventListener('click', () => navigateTo('home'));
+    document.getElementById('nav-schedule').addEventListener('click', () => navigateTo('schedule'));
+    document.getElementById('nav-about').addEventListener('click', () => navigateTo('about'));
+
+    // Кнопки истории
+    document.getElementById('hist-back').addEventListener('click', () => history.back());
+    document.getElementById('hist-forward').addEventListener('click', () => history.forward());
+
+    // Обработчик popstate — срабатывает при back/forward
+    window.addEventListener('popstate', (ev) => {
+      // ev.state — состояние, которое было пушнуто ранее (или null)
+      renderState(ev.state);
+    });
+
+    // При первой загрузке — если в URL есть хеш, переводим на соответствующую страницу через replaceState
+    (function initFromUrl() {
+      const hash = location.hash.replace('#','');
+      if (hash && pages[hash]) {
+        // Используем replaceState, чтобы не создавать лишнюю запись в истории при первой загрузке
+        const initState = { page: hash, ts: Date.now() };
+        history.replaceState(initState, pages[hash].title, '#' + hash);
+        renderState(initState);
+      } else {
+        // Состояния ещё нет — ставим пустое
+        history.replaceState(null, '', location.pathname + location.search);
+        renderState(null);
+      }
+    })();
+
+    // Дополнительно: защита от случайного двойного увеличения счётчика истории (необязательно)
+    // (в нашем простом примере не требуется)
+
+    // Всё. Код компактный, комментариев достаточно — делай тесты.
+  </script>
+</body>
+</html>
