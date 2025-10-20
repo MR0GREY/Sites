@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Пример</title>
+    <style>
+        button {
+            margin: 5px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Управление браузером</h2>
+
+    <!-- Кнопки для навигации по истории -->
+    <button id="backBtn">Назад</button>
+    <button id="forwardBtn">Вперед</button>
+
+    <script>
+        // 1. Определение текущего размера окна при его изменении
+        function updateWindowSize() {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            console.log(`Ширина: ${width}px, Высота: ${height}px`);
+        }
+
+        // Обработчик события изменения размера окна
+        window.addEventListener('resize', updateWindowSize);
+
+        // Вызовем сразу при загрузке страницы, чтобы знать текущий размер
+        updateWindowSize();
+
+
+        // 2. Подтверждение закрытия страницы
+        window.addEventListener('beforeunload', function(e) {
+            // Стандарт для большинства браузеров: установить сообщение в returnValue
+            e.preventDefault(); // Для современного стандарта
+            e.returnValue = ''; // Chrome требует установку этого свойства
+            return ''; // Для старых браузеров
+        });
+
+
+        // 3. Управление историей переходов
+        const backBtn = document.getElementById('backBtn');
+        const forwardBtn = document.getElementById('forwardBtn');
+
+        backBtn.addEventListener('click', () => {
+            history.back();
+        });
+
+        forwardBtn.addEventListener('click', () => {
+            history.forward();
+        });
+    </script>
+
+</body>
+
+</html>

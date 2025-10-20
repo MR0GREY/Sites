@@ -1,0 +1,152 @@
+/* Общие стили */
+
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background: linear-gradient(to bottom, #3498db, #9b59b6);
+    height: 100vh;
+    color: white;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    height: 100%;
+}
+
+
+/* Стили бокового меню */
+
+.sidebar {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 250px;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar nav ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar nav ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+}
+
+.sidebar nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+/* Стили контента */
+
+.content {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+
+/* Кнопка для открытия/закрытия меню (для мобильных) */
+
+.menu-toggle {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: none;
+}
+
+
+/* Класс для скрытия меню */
+
+.sidebar.hidden {
+    transform: translateX(-250px);
+}
+
+
+/* Медиа-запрос для адаптации под мобильные устройства */
+
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        z-index: 10;
+        transform: translateX(-250px);
+    }
+    .content {
+        padding-top: 60px;
+    }
+    .menu-toggle {
+        display: block;
+    }
+    .sidebar.hidden {
+        transform: translateX(0);
+    }
+}
+
+
+/* Стили для страницы проектов */
+
+.projects-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding: 20px;
+    gap: 20px;
+}
+
+.project-item {
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    color: black;
+}
+
+.project-item:hover {
+    transform: scale(1.05);
+}
+
+.project-item h2 {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 5px;
+    margin: 0;
+    font-size: 14px;
+    color: white;
+}
+
+.project-item a {
+    display: block;
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+}
+
+.project-item iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    pointer-events: none;
+}

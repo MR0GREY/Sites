@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Список статей</title>
+    <!-- Подключение Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="container my-4">
+
+    <h1 class="mb-4">Список статей</h1>
+
+    <!-- Кнопки управления -->
+    <div class="mb-3">
+        <button id="addArticleBtn" class="btn btn-primary me-2">Добавить статью</button>
+        <button id="deleteArticleBtn" class="btn btn-danger">Удалить последнюю статью</button>
+    </div>
+
+    <!-- Контейнер для статей -->
+    <div id="articlesContainer" class="row g-3"></div>
+
+    <!-- Скрипты Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Начальные данные статей (можно заменить на свои)
+        const initialArticles = [{
+            title: "Статья 1",
+            content: "Это содержание первой статьи."
+        }, {
+            title: "Статья 2",
+            content: "Это содержание второй статьи."
+        }, {
+            title: "Статья 3",
+            content: "Это содержание третьей статьи."
+        }];
+
+        const container = document.getElementById('articlesContainer');
+
+        // Функция для сохранения статей в localStorage
+        function saveArticles(articles) {
+            localStorage.setItem('articles', JSON.stringify(articles));
+        }
+
+        // Функция для загрузки статей из localStorage
+        function loadArticles() {
+            const data = localStorage.getItem('articles');
+            if (data) {
+                return JSON.parse(data);
+            } else {
+                // Если в хранилище нет данных, загружаем начальные
+                saveArticles(initialArticles);
+                return initialArticles;
+            }
+        }
+
+        // Отрисовка статей на странице
+        function renderArticles() {
+            container.innerHTML = '';
+            articles.forEach((article, index) => {
+                const col = document.createElement('div');
+                col.className = 'col-md-4';
+
+                const card = document.createElement('div');
+                card.className = 'card h-100';
+
+                const cardBody = document.createElement('div');
+                cardBody.className = 'card-body';
+
+                const title = document.createElement('h2');
+                title.className = 'card-title';
+                title.textContent = article.title;
+
+                const content = document.createElement('p');
+                content.className = 'card-text';
+                content.textContent = article.content;
+
+                // Кнопка редактирования
+                const editBtn = document.createElement('button');
+                editBtn.className = 'btn btn-secondary me-2';
+                editBtn.textContent = 'Редактировать';
+                editBtn.onclick = () => {
+                    const newTitle = prompt('Введите новый заголовок:', article.title);
+                    if (newTitle !== null && newTitle.trim() !== '') {
+                        article.title = newTitle.trim();
+                    }
+                    const newContent = prompt('Введите новый текст:', article.content);
+                    if (newContent !== null && newContent.trim() !== '') {
+                        article.content = newContent.trim();
+                    }
+                    saveArticles(articles);
+                    renderArticles();
+                };
+
+                // Кнопка удаления отдельной статьи
+                const deleteBtn = document.createElement('button');
+                deleteBtn.className = 'btn btn-danger';
+                deleteBtn.textContent = 'Удалить';
+                deleteBtn.onclick = () => {
+                    articles.splice(index, 1);
+                    saveArticles(articles);
+                    renderArticles();
+                };
+
+                cardBody.appendChild(title);
+                cardBody.appendChild(content);
+                cardBody.appendChild(editBtn);
+                cardBody.appendChild(deleteBtn);
+
+                card.appendChild(cardBody);
+                col.appendChild(card);
+                container.appendChild(col);
+            });
+        }
+
+        // Загружаем статьи и отображаем при старте
+        let articles = loadArticles();
+        renderArticles();
+
+        // Обработчик для добавления новой статьи
+        document.getElementById('addArticleBtn').onclick = () => {
+            const newArticle = {
+                title: 'Новая статья',
+                content: 'Введите содержание статьи...'
+            };
+            articles.push(newArticle);
+            saveArticles(articles);
+            renderArticles();
+        };
+
+        // Обработчик для удаления последней статьи
+        document.getElementById('deleteArticleBtn').onclick = () => {
+            if (articles.length > 0) {
+                articles.pop();
+                saveArticles(articles);
+                renderArticles();
+            } else {
+                alert('Нет статей для удаления.');
+            }
+        };
+    </script>
+
+</body>
+
+</html>
